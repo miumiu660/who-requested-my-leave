@@ -7,7 +7,7 @@ const DATA = {
  anomalies:[
  {day:3,title:'病假 · 高热',duration:'1天',owner:'罗晨',reason:'高热，申请居家休息。',attachment:'temp',hr:'快捷通道材料仅存档。',impact:'原始病假归属罗晨；暂存关联进入OP-026。',gate:'earliest'},
  {day:6,title:'宠物绝育陪护',duration:'半天',owner:'未登记',reason:'宠物绝育术后需陪护。',attachment:'catSurgery',hr:'术后注意保暖。',impact:'医疗附件被暂存至OP-026，不影响原始业务。',gate:'todayPresence'},
- {day:10,title:'年假 · 婚姻信息更新',duration:'1天',owner:'何骏',reason:'婚假申请及婚姻信息更新。',attachment:'wedding',hr:'原业务已由本人正常办理。',impact:'何骏原记录正常；张佳诚档案新增重复关联。',gate:'todayPresence'},
+ {day:10,title:'年假 · 婚姻信息更新',duration:'1天',owner:'何骏',reason:'婚假申请及婚姻信息更新。',attachment:'wedding',hr:'原业务已由本人正常办理。',impact:'原申请记录保留；关联信息已同步至OP-026。',gate:'todayPresence'},
  {day:14,title:'四城差旅关联摘要',duration:'当日',owner:'多人',reason:'广州 / 深圳 / 长沙 / 上海，项目现场支持。',attachment:'travel',hr:'四笔原始报销均已结算。',impact:'不影响原出差人；四条摘要被重复写入OP-026。',gate:'marriage'},
  {day:18,title:'历史人事数据迁移',duration:'批量导入 / 7条',owner:'迁移批次',reason:'旧人事系统临时材料导入。',attachment:'box',hr:'迁移批次已写入员工主档案。',impact:'婚姻、子女、住址及宠物附件同步至OP-026。',gate:'travel'},
  {day:23,title:'年假 · 家庭事务',duration:'2天',owner:'周敏',reason:'家庭事务，申请年假2天。',attachment:'door',hr:'原始年假归属经办人本人。',impact:'周敏年假正常；张佳诚档案额外扣除2天。',gate:'migration'},
@@ -38,7 +38,7 @@ const DATA = {
  {id:'tripChat',channel:'项目协同群',date:14,time:'08:30',gate:'marriage',keys:'差旅 四城 深圳 长沙 上海 广州 项目 XS-14 XZ-14 XM-14 何骏 周敏 罗子豪',lines:[['何骏','XS-14我去深圳，和客户采购组一起。'],['周敏','XZ-14长沙会务我处理。'],['罗子豪','XM-14上海验收，实施组跟我走。'],['张佳诚','我今天在广州办公室，运营排期照常。'],['贺磊','票据记得按项目编号上传。']]},
  {id:'migrationChat',channel:'人事迁移协作',date:18,time:'14:58',gate:'migrationSource',keys:'刘一颖 周敏 模板 迁移 佳诚 HR-03 OP-026',lines:[['刘一颖','旧OA这批临时材料挂在哪个暂存单？'],['周敏','OP-026，之前一直拿它放未分类附件。'],['刘一颖','这个编号对应的是张佳诚，不是公共目录。'],['周敏','旧系统里只用于暂存，原业务都有自己的申请人。'],['刘一颖','新系统会把关联员工当成材料所属人。'],['周敏','先跑完吧，月底我和财务一起改。']]},
  {id:'borrowChat',channel:'周敏',date:23,time:'14:05',gate:'migration',keys:'周敏 刘一颖 OP-026 家庭事务 模板',forwardedBy:'周敏',forwardedWith:'刘一颖',forwardIntro:'23日那两天年假是我自己的，原单一直正常。这是迁移前的对接记录。',lines:[['周敏','我自己的年假已经批了，证明先放临时材料单。'],['刘一颖','暂存单还是OP-026？'],['周敏','对，月底会按原申请人拆回去。'],['刘一颖','迁移前最好先清。'],['周敏','来不及了，先把这批跑完。']]},
- {id:'recentChat',channel:'罗晨',date:27,time:'17:42',gate:'migration',keys:'27 病假 建议休息 周敏 罗晨 三天 模板',forwardedBy:'罗晨',forwardedWith:'周敏',forwardIntro:'27日那张证明是我的，我自己的病假已经批了。刚才看到你也被标成病假，才想起这段对话。',lines:[['罗晨','三天病假已经批了，证明还要再传一次吗？'],['周敏','不用，行政这边留一份归档。'],['罗晨','归档页怎么显示OP-026？'],['周敏','只是临时材料单，不影响你的原申请。'],['罗晨','那是谁的编号？'],['周敏','……我晚点处理。']]},
+ {id:'recentChat',channel:'罗晨',date:27,time:'17:42',gate:'migration',keys:'27 病假 建议休息 周敏 罗晨 三天 模板',forwardedBy:'罗晨',forwardedWith:'周敏',forwardIntro:'昨天那张证明是我交的。我刚翻到和周敏的聊天，发你看看。',lines:[['罗晨','三天病假已经批了，证明还要再传一次吗？'],['周敏','不用，行政这边留一份归档。'],['罗晨','归档页怎么显示OP-026？'],['周敏','只是临时材料单，不影响你的原申请。'],['罗晨','那是谁的编号？'],['周敏','……我晚点处理。']]},
  {id:'originChat',channel:'行政流程协作 · 历史记录',date:3,time:'08:26',gate:'earliest',keys:'罗晨 周敏 最早 发热 生病 暂存 OP-026',lines:[['罗晨','病假已经批了，证明发你存档。'],['周敏','收到。旧OA的临时关联员工不能为空。'],['刘一颖','公共暂存账号还没开通。'],['周敏','那先用上次测试留下的OP-026，只存附件。'],['刘一颖','那个编号是张佳诚。'],['周敏','月底清掉就行，不会进她主档案。'],['刘一颖','要跟她说一声吗？'],['周敏','只是暂存，她应该不会介意。']]}
  ]
 };
